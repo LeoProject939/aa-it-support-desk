@@ -13,6 +13,13 @@ def create_app():
     db.init_app(app)
 
     from app import models
+    from app.admin_routes import admin
+    from app.auth_routes import auth
+    from app.ticket_routes import tickets
+
+    app.register_blueprint(auth)
+    app.register_blueprint(tickets)
+    app.register_blueprint(admin)
 
     @app.route("/")
     def home():

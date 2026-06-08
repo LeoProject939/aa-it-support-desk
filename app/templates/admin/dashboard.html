@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<h3>All Tickets</h3>
+
+{% if tickets %}
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>User</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.created_by.full_name }}</td>
+            <td>{{ ticket.category.name }}</td>
+            <td>{{ ticket.priority }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>
+                <a href="{{ url_for('tickets.view_ticket', ticket_id=ticket.id) }}">View</a>
+                |
+                <a href="{{ url_for('admin.update_ticket', ticket_id=ticket.id) }}">Update</a>
+                |
+                <form method="post"
+                      action="{{ url_for('admin.delete_ticket', ticket_id=ticket.id) }}"
+                      style="display:inline;"
+                      onsubmit="return confirm('Are you sure you want to delete this ticket?');">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No tickets found.</p>
+{% endif %}
+
+<h3>Users</h3>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.full_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Recent Audit Logs</h3>
+
+{% if audit_logs %}
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Event</th>
+            <th>Message</th>
+            <th>IP Address</th>
+            <th>Created</th>
+        </tr>
+
+        {% for log in audit_logs %}
+        <tr>
+            <td>{{ log.event_type }}</td>
+            <td>{{ log.message }}</td>
+            <td>{{ log.ip_address }}</td>
+            <td>{{ log.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No audit logs found.</p>
+{% endif %}
+{% endblock %}

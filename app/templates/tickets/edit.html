@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Ticket #{{ ticket.id }}</h2>
+
+<form method="post">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(size=60) }}<br>
+        {% for error in form.title.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.description.label }}<br>
+        {{ form.description(rows=6, cols=60) }}<br>
+        {% for error in form.description.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.category_id.label }}<br>
+        {{ form.category_id() }}<br>
+        {% for error in form.category_id.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.priority.label }}<br>
+        {{ form.priority() }}<br>
+        {% for error in form.priority.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
