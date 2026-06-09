@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Access denied</h2>
+
+<p>
+    You do not have permission to access this page.
+</p>
+
+<p class="small-text">
+    This page is protected by role-based access control.
+</p>
+
+<p>
+    <a class="button" href="{{ url_for('tickets.list_tickets') }}">Return to tickets</a>
+</p>
+{% endblock %}

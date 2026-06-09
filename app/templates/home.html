@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Internal AA IT Support Desk</h2>
+
+<p>
+    This secure support desk application allows staff to raise IT support tickets
+    and allows administrators to manage ticket status, priority and support activity.
+</p>
+
+<p>
+    The application includes user authentication, role-based access control,
+    validation, audit logging and database-backed ticket management for AA tickets.
+</p>
+
+{% if session.get("user_id") %}
+    <p><a class="button" href="{{ url_for('tickets.list_tickets') }}">View tickets</a></p>
+{% else %}
+    <p><a class="button" href="{{ url_for('auth.login') }}">Log in</a></p>
+{% endif %}
+{% endblock %}

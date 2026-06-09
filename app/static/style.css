@@ -1,0 +1,154 @@
+:root {
+    --aa-yellow: #ffd200;
+    --aa-dark: #111111;
+    --aa-grey: #f4f4f4;
+    --aa-border: #d8d8d8;
+    --aa-white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--aa-grey);
+    color: var(--aa-dark);
+}
+
+header {
+    background: var(--aa-dark);
+    color: var(--aa-white);
+    border-bottom: 6px solid var(--aa-yellow);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 24px;
+}
+
+header h1 {
+    margin: 0 0 12px 0;
+    font-size: 28px;
+}
+
+nav a {
+    color: var(--aa-white);
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--aa-yellow);
+}
+
+main {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 0 24px;
+}
+
+.card {
+    background: var(--aa-white);
+    border: 1px solid var(--aa-border);
+    border-radius: 8px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+h2, h3 {
+    margin-top: 0;
+}
+
+a {
+    color: #111111;
+    font-weight: bold;
+}
+
+.button,
+button,
+input[type="submit"] {
+    background: var(--aa-yellow);
+    color: var(--aa-dark);
+    border: 1px solid var(--aa-dark);
+    border-radius: 5px;
+    padding: 9px 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+    background: #e6bd00;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    max-width: 620px;
+    padding: 9px;
+    border: 1px solid var(--aa-border);
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--aa-white);
+}
+
+th {
+    background: var(--aa-dark);
+    color: var(--aa-white);
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid var(--aa-border);
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.flash {
+    border-radius: 5px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+.flash-success {
+    background: #e7f7e7;
+    border: 1px solid #76b876;
+}
+
+.flash-error {
+    background: #fde8e8;
+    border: 1px solid #d66;
+}
+
+.error-text {
+    color: #b00020;
+    font-size: 14px;
+}
+
+.small-text {
+    font-size: 14px;
+    color: #555;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}

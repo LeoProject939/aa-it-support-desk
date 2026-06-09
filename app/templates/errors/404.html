@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Page not found</h2>
+
+<p>
+    The page you requested could not be found.
+</p>
+
+<p>
+    <a class="button" href="{{ url_for('tickets.list_tickets') }}">Return to tickets</a>
+</p>
+{% endblock %}

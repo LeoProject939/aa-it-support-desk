@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 
@@ -23,6 +23,18 @@ def create_app():
 
     @app.route("/")
     def home():
-        return "AA IT Support Desk is running."
+        return render_template("home.html")
+
+    @app.errorhandler(403)
+    def forbidden(error):
+        return render_template("errors/403.html"), 403
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template("errors/404.html"), 404
+
+    @app.errorhandler(500)
+    def server_error(error):
+        return render_template("errors/500.html"), 500
 
     return app
