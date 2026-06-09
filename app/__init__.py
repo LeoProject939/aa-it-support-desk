@@ -5,14 +5,18 @@ from config import Config
 db = SQLAlchemy()
 
 
-def create_app():
-    """Create/configure the AA - Support Desk App."""
+def create_app(test_config=None):
+    """Create and configure the AA Flask application."""
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    if test_config:
+        app.config.update(test_config)
 
     db.init_app(app)
 
     from app import models
+    from app.demo_data import create_demo_data
     from app.admin_routes import admin
     from app.auth_routes import auth
     from app.ticket_routes import tickets
@@ -20,6 +24,12 @@ def create_app():
     app.register_blueprint(auth)
     app.register_blueprint(tickets)
     app.register_blueprint(admin)
+
+    with app.app_context():
+        db.create_all()
+
+        if not app.config.get("TESTING"):
+            create_demo_data()
 
     @app.route("/")
     def home():

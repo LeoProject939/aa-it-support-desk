@@ -7,13 +7,12 @@ from app.models import Category, Ticket, User
 
 @pytest.fixture
 def app():
-    test_app = create_app()
-    test_app.config.update(
-        TESTING=True,
-        WTF_CSRF_ENABLED=False,
-        SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
-        SECRET_KEY="test-secret-key"
-    )
+    test_app = create_app({
+        "TESTING": True,
+        "WTF_CSRF_ENABLED": False,
+        "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
+        "SECRET_KEY": "test-secret-key"
+    })
 
     with test_app.app_context():
         db.create_all()
