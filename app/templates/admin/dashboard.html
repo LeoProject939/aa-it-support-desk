@@ -26,9 +26,9 @@
             <td>{{ ticket.priority }}</td>
             <td>{{ ticket.status }}</td>
             <td>
-                <a href="{{ url_for('tickets.view_ticket', ticket_id=ticket.id) }}">View</a>
+                <a class="button" href="{{ url_for('tickets.view_ticket', ticket_id=ticket.id) }}">View</a>
                 |
-                <a href="{{ url_for('admin.update_ticket', ticket_id=ticket.id) }}">Update</a>
+                <a class="button" href="{{ url_for('admin.update_ticket', ticket_id=ticket.id) }}">Update</a>
                 |
                 <form method="post"
                       action="{{ url_for('admin.delete_ticket', ticket_id=ticket.id) }}"
@@ -43,6 +43,8 @@
 {% else %}
     <p>No tickets found.</p>
 {% endif %}
+
+<br>
 
 <h3>Users</h3>
 
@@ -63,6 +65,8 @@
     </tr>
     {% endfor %}
 </table>
+
+<br>
 
 <h3>Recent Audit Logs</h3>
 
