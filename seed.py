@@ -29,19 +29,31 @@ def seed_database():
         db.session.commit()
 
         categories = [
-            Category(
-                name="Laptop",
-                description="Laptop, hardware or device issues"
-            ),
-            Category(
-                name="Network",
-                description="Wi-Fi, VPN or connection issues"
-            ),
-            Category(
-                name="Account Access",
-                description="Password, login or permission issues"
-            )
-        ]
+        Category(
+            name="Laptop",
+            description="Laptop, hardware or device issues"
+        ),
+        Category(
+            name="Network",
+            description="Wi-Fi, VPN or connection issues"
+        ),
+        Category(
+            name="Account Access",
+            description="Password, login or permission issues"
+        ),
+        Category(
+            name="Business Application Support",
+            description="Support for internal business applications and system errors"
+        ),
+        Category(
+            name="Software Installation",
+            description="Software requests, installation problems and application updates"
+        ),
+        Category(
+            name="Other",
+            description="Can't find what you're looking for"
+        )
+    ]
 
         db.session.add_all(categories)
         db.session.commit()

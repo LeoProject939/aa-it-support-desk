@@ -38,6 +38,18 @@ def create_demo_data():
         Category(
             name="Account Access",
             description="Password, login or permission issues"
+        ),
+        Category(
+            name="Business Application Support",
+            description="Support for internal business applications and system errors"
+        ),
+        Category(
+            name="Software Installation",
+            description="Software requests, installation problems and application updates"
+        ),
+        Category(
+            name="Other",
+            description="Can't find what you're looking for"
         )
     ]
 
